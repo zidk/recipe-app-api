@@ -1,5 +1,5 @@
 """
-Test for admin.
+Tests for the Django admin modifications.
 """
 
 from django.test import TestCase
@@ -9,7 +9,7 @@ from django.test import Client
 
 
 class AdminSiteTests(TestCase):
-    """Test for Django admin."""
+    """Tests for Django admin."""
 
     def setUp(self):
         """Create user and client."""
@@ -25,7 +25,7 @@ class AdminSiteTests(TestCase):
             name='Test User',
         )
 
-    def test_user_list(self):
+    def test_users_lists(self):
         """Test that users are listed on page."""
         url = reverse('admin:core_user_changelist')
         res = self.client.get(url)
@@ -40,11 +40,11 @@ class AdminSiteTests(TestCase):
         url = reverse('admin:core_user_change', args=[self.user.id])
         res = self.client.get(url)
 
-        self.assertEquals(res.status_code, 200)
+        self.assertEqual(res.status_code, 200)
 
     def test_create_user_page(self):
         """Test the create user page works."""
         url = reverse('admin:core_user_add')
         res = self.client.get(url)
 
-        self.assertEquals(res.status_code, 200)
+        self.assertEqual(res.status_code, 200)

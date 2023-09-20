@@ -1,5 +1,5 @@
 """
-Test for models.
+Tests for models.
 """
 
 from django.test import TestCase
@@ -18,7 +18,7 @@ class ModelTests(TestCase):
             password=password,
         )
 
-        self.assertEquals(user.email, email)
+        self.assertEqual(user.email, email)
         self.assertTrue(user.check_password(password))
 
     def test_new_user_email_normalized(self):
@@ -42,7 +42,7 @@ class ModelTests(TestCase):
         """Test creating a superuser."""
         user = get_user_model().objects.create_superuser(
             'test@example.com',
-            'test123'
+            'test123',
         )
 
         self.assertTrue(user.is_superuser)
